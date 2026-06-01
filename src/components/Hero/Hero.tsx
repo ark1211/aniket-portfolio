@@ -59,7 +59,7 @@ export default function Hero() {
 
           <div className={styles.imageCol}>
             <img
-              src="/profile.jpg"
+              src={`${import.meta.env.BASE_URL}profile.jpg`}
               alt="Aniket Kulkarni"
               className={styles.profileImage}
             />
