@@ -1,9 +1,10 @@
 .contact {
   text-align: left;
+  background-color: var(--color-bg-subtle);
+  border-top: 1px solid var(--color-border);
 }
 
 .inner {
-  max-width: var(--content-width);
 }
 
 .label {
@@ -17,7 +18,7 @@
 
 .heading {
   font-size: clamp(var(--text-3xl), 4vw, var(--text-5xl));
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: -0.03em;
   line-height: var(--leading-tight);
   color: var(--color-text);
