@@ -1,0 +1,156 @@
+/* Google Sans loaded via <link> in index.html */
+
+/* ─── Design Tokens ─────────────────────────────────────────── */
+:root {
+  /* Colors */
+  --color-bg:           #F9F8F6;
+  --color-bg-subtle:    #F0EEE9;
+  --color-text:         #18181B;
+  --color-text-muted:   #71716A;
+  --color-border:       #E4E2DC;
+  /* Accent: warm terracotta — open question in theme.md: warm vs cool */
+  --color-accent:       #C2612A;
+  --color-accent-hover: #A85226;
+
+  /* Typography */
+  --font-sans: 'Google Sans', system-ui, -apple-system, sans-serif;
+  --text-sm:   0.875rem;
+  --text-base: 1rem;
+  --text-lg:   1.125rem;
+  --text-xl:   1.25rem;
+  --text-2xl:  1.5rem;
+  --text-3xl:  1.875rem;
+  --text-4xl:  2.25rem;
+  --text-5xl:  3rem;
+  --text-6xl:  3.75rem;
+  --leading-tight:  1.2;
+  --leading-snug:   1.4;
+  --leading-normal: 1.6;
+  --leading-relaxed:1.75;
+
+  /* Spacing */
+  --space-2:  0.5rem;
+  --space-3:  0.75rem;
+  --space-4:  1rem;
+  --space-6:  1.5rem;
+  --space-8:  2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+  --space-32: 8rem;
+
+  /* Layout */
+  --max-width:     1100px;
+  --content-width: 720px;
+  --nav-height:    72px;
+
+  /* Nav glass background (theme-aware) */
+  --color-bg-glass: rgba(249, 248, 246, 0.92);
+
+  /* Motion */
+  --ease-fast: 150ms ease;
+  --ease-base: 250ms ease;
+}
+
+/* ─── Dark mode tokens ───────────────────────────────────────── */
+[data-theme="dark"] {
+  --color-bg:           #18181B;
+  --color-bg-subtle:    #27272A;
+  --color-text:         #F4F4F5;
+  --color-text-muted:   #A1A19A;
+  --color-border:       #3F3F46;
+  --color-accent:       #E07A4A;
+  --color-accent-hover: #C96A3C;
+  --color-bg-glass:     rgba(24, 24, 27, 0.92);
+}
+
+/* ─── Reset ─────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+  width: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 300ms ease, color 300ms ease;
+  width: 100%;
+}
+
+#root {
+  width: 100%;
+}
+
+img, video {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+/* ─── Material Symbols ───────────────────────────────────────── */
+.material-symbols-outlined {
+  font-family: 'Material Symbols Outlined';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 20px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-smoothing: antialiased;
+  user-select: none;
+}
+
+/* ─── Utilities ──────────────────────────────────────────────── */
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding-inline: var(--space-6);
+}
+
+.section {
+  padding-block: var(--space-24);
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding-block: var(--space-16);
+  }
+  .container {
+    padding-inline: var(--space-4);
+  }
+}
