@@ -31,6 +31,7 @@ export default function Nav() {
         <a href="#hero" className={styles.logo}>Aniket Kulkarni</a>
         <div className={styles.right}>
           <ul className={styles.links}>
+            <li><a href="#work" className={styles.link}>Work</a></li>
             <li><a href="#about" className={styles.link}>About</a></li>
             <li><a href="#contact" className={styles.link}>Contact</a></li>
           </ul>
