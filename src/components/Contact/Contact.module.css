@@ -29,7 +29,7 @@
   font-size: var(--text-lg);
   color: var(--color-text-muted);
   line-height: var(--leading-relaxed);
-  margin-bottom: var(--space-10);
+  margin-bottom: var(--space-6);
 }
 
 .links {

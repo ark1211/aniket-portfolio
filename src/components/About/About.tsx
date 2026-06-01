@@ -28,6 +28,7 @@ export default function About() {
     <section id="about" className={`${styles.about} section`}>
       <div className="container">
         <p className={styles.label}>About</p>
+        <h2 className={styles.heading}>Both sides of the table.</h2>
         <div className={styles.layout}>
           <div className={styles.copy}>
             <p>

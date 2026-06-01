@@ -13,13 +13,13 @@ export default function Contact() {
           </p>
           <div className={styles.links}>
             <a
-              href="mailto:your@email.com"
+              href="mailto:ark1211@gmail.com"
               className={`${styles.link} ${styles.linkPrimary}`}
             >
-              your@email.com
+              ark1211@gmail.com
             </a>
             <a
-              href="https://linkedin.com/in/yourhandle"
+              href="https://www.linkedin.com/in/kulkarnianiket/"
               target="_blank"
               rel="noopener noreferrer"
               className={`${styles.link} ${styles.linkSecondary}`}

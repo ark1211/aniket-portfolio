@@ -2,8 +2,8 @@
   background-color: var(--color-bg-subtle);
   border-top: 1px solid var(--color-border);
   border-bottom: 1px solid var(--color-border);
-  padding-top: var(--space-6);
-  padding-bottom: var(--space-12);
+  padding-top: var(--space-16);
+  padding-bottom: var(--space-16);
 }
 
 .label {
@@ -15,9 +15,18 @@
   margin-bottom: var(--space-4);
 }
 
+.heading {
+  font-size: clamp(var(--text-2xl), 3vw, var(--text-4xl));
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: var(--leading-tight);
+  color: var(--color-text);
+  margin-bottom: var(--space-10);
+}
+
 .layout {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 3fr 2fr;
   gap: var(--space-16);
   align-items: start;
 }
