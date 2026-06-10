@@ -33,6 +33,10 @@ jobs:
 
       - run: pnpm install
       - run: pnpm build
+        env:
+          VITE_ADMIN_USER: ${{ secrets.VITE_ADMIN_USER }}
+          VITE_ADMIN_PASS: ${{ secrets.VITE_ADMIN_PASS }}
+          VITE_GITHUB_PAT: ${{ secrets.VITE_GITHUB_PAT }}
 
       - uses: actions/configure-pages@v4
       - uses: actions/upload-pages-artifact@v3
