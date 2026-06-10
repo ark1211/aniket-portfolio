@@ -27,6 +27,7 @@ interface AdminContextValue {
   content: SiteContent
   isDirty: boolean
   saveStatus: 'idle' | 'saving' | 'success' | 'error'
+  saveError: string
   editKey: number
   login: (username: string, password: string) => void
   logout: () => void
@@ -49,6 +50,7 @@ export function AdminProvider({ children }: { children: ReactNode }) {
   const [savedContent, setSavedContent] = useState<SiteContent>(defaultContent)
   const [isDirty, setIsDirty] = useState(false)
   const [saveStatus, setSaveStatus] = useState<'idle' | 'saving' | 'success' | 'error'>('idle')
+  const [saveError, setSaveError] = useState('')
   const [editKey, setEditKey] = useState(0)
 
   useEffect(() => {
@@ -103,14 +105,23 @@ export function AdminProvider({ children }: { children: ReactNode }) {
 
   async function save() {
     const pat = import.meta.env.VITE_GITHUB_PAT
-    if (!pat) { setSaveStatus('error'); setTimeout(() => setSaveStatus('idle'), 3000); return }
+    if (!pat) {
+      setSaveError('VITE_GITHUB_PAT is not set in GitHub Secrets.')
+      setSaveStatus('error')
+      setTimeout(() => setSaveStatus('idle'), 6000)
+      return
+    }
     setSaveStatus('saving')
+    setSaveError('')
     try {
       const fileRes = await fetch(
         `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${CONTENT_PATH}`,
         { headers: { Authorization: `Bearer ${pat}` } }
       )
-      if (!fileRes.ok) throw new Error('Failed to fetch file metadata')
+      if (!fileRes.ok) {
+        const body = await fileRes.json().catch(() => ({}))
+        throw new Error(`GitHub ${fileRes.status}: ${body.message ?? 'fetch metadata failed'}`)
+      }
       const fileData = await fileRes.json()
 
       const newContent = JSON.stringify(content, null, 2)
@@ -133,22 +144,26 @@ export function AdminProvider({ children }: { children: ReactNode }) {
           })
         }
       )
-      if (!updateRes.ok) throw new Error('Failed to save content')
+      if (!updateRes.ok) {
+        const body = await updateRes.json().catch(() => ({}))
+        throw new Error(`GitHub ${updateRes.status}: ${body.message ?? 'update failed'}`)
+      }
 
       setSavedContent(content)
       setIsDirty(false)
       setSaveStatus('success')
       setTimeout(() => setSaveStatus('idle'), 3000)
-    } catch {
+    } catch (err) {
+      const msg = err instanceof Error ? err.message : 'Unknown error'
+      setSaveError(msg)
       setSaveStatus('error')
-      setTimeout(() => setSaveStatus('idle'), 3000)
-      throw new Error('Save failed')
+      setTimeout(() => setSaveStatus('idle'), 8000)
     }
   }
 
   return (
     <AdminContext.Provider value={{
-      isAdmin, content, isDirty, saveStatus, editKey,
+      isAdmin, content, isDirty, saveStatus, saveError, editKey,
       login, logout, updateHero, save, discard
     }}>
       {children}

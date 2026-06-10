@@ -2,7 +2,7 @@ import { useAdmin } from '../../context/AdminContext'
 import styles from './Admin.module.css'
 
 export default function AdminBar() {
-  const { isDirty, saveStatus, save, discard, logout } = useAdmin()
+  const { isDirty, saveStatus, saveError, save, discard, logout } = useAdmin()
 
   async function handleSave() {
     try {
@@ -22,6 +22,11 @@ export default function AdminBar() {
     <div className={styles.adminBar}>
       <span className={styles.adminLabel}>Admin Mode</span>
       <div className={styles.adminActions}>
+        {saveStatus === 'error' && saveError && (
+          <span className={styles.saveErrorMsg} title={saveError}>
+            {saveError}
+          </span>
+        )}
         {isDirty && (
           <>
             <span className={styles.unsavedBadge}>Unsaved changes</span>

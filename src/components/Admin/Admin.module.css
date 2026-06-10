@@ -34,6 +34,15 @@
   font-weight: 500;
 }
 
+.saveErrorMsg {
+  font-size: 0.75rem;
+  color: #f87171;
+  max-width: 360px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .saveBtn {
   height: 28px;
   padding: 0 0.875rem;
