@@ -55,7 +55,7 @@ export function AdminProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     const baseUrl = import.meta.env.BASE_URL
-    fetch(`${baseUrl}content.json`)
+    fetch(`${baseUrl}content.json`, { cache: 'no-store' })
       .then(r => r.json())
       .then((data: SiteContent) => {
         setContent(data)
