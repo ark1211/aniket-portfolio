@@ -1,12 +1,17 @@
+import { AdminProvider, useAdmin } from './context/AdminContext'
+import AdminBar from './components/Admin/AdminBar'
 import Nav from './components/Nav/Nav'
 import Hero from './components/Hero/Hero'
 import About from './components/About/About'
 import Projects from './components/Projects/Projects'
 import Contact from './components/Contact/Contact'
+import Footer from './components/Footer/Footer'
 
-export default function App() {
+function AppContent() {
+  const { isAdmin } = useAdmin()
   return (
     <>
+      {isAdmin && <AdminBar />}
       <Nav />
       <main>
         <Hero />
@@ -14,6 +19,15 @@ export default function App() {
         <About />
         <Contact />
       </main>
+      <Footer />
     </>
+  )
+}
+
+export default function App() {
+  return (
+    <AdminProvider>
+      <AppContent />
+    </AdminProvider>
   )
 }

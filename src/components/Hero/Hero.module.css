@@ -4,7 +4,7 @@
   min-height: 80svh;
   display: flex;
   align-items: center;
-  padding-top: calc(var(--nav-height) + var(--space-16));
+  padding-top: calc(var(--nav-height) + var(--admin-bar-height, 0px) + var(--space-16));
   padding-bottom: var(--space-12);
 }
 
