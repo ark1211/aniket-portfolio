@@ -6,6 +6,7 @@ import About from './components/About/About'
 import Projects from './components/Projects/Projects'
 import Contact from './components/Contact/Contact'
 import Footer from './components/Footer/Footer'
+import ParticleBackground from './components/ParticleBackground/ParticleBackground'
 
 function AppContent() {
   const { isAdmin } = useAdmin()
@@ -27,6 +28,7 @@ function AppContent() {
 export default function App() {
   return (
     <AdminProvider>
+      <ParticleBackground />
       <AppContent />
     </AdminProvider>
   )
